@@ -16,6 +16,7 @@ extern "C" {
 
 typedef struct __PACKED{
     int SH1106:1;
+     int SSD1039：1;
     int InternalChargePump:1;
 }displaysetup_t;
 
