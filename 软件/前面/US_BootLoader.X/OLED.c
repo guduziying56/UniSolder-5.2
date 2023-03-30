@@ -118,6 +118,12 @@ void OLEDInit(){
     mcuSPIWait();
     mcuSPISendBytes((unsigned int*)OLEDInitBuff2, sizeof(OLEDInitBuff2));     
 }
+if(DisplaySetup.SSD1309){
+        PreUpdateBuff.PreRowUpdate.ColLow = 2; //SSD1309 is 131x64 - shift right by 2
+        mcuSPISendByte(0xAD); //charge pump control       
+        mcuSPISendByte(DisplaySetup.InternalChargePump ? 0x8B : 0x8A);
+    }
+   
 
 void OLEDUpdate(){
     UINT8 r;
